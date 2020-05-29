@@ -59,3 +59,41 @@
   position: absolute;
   left: 8%;
 }
+
+.inventory-container button {
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+  top:5%;
+  background-color: #3AD886;
+  border: none;
+  border-radius: 4px;
+  font-weight: bolder;
+}
+
+.inventory-container button:hover {
+  background-color: #ED6B5A;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #AB2A19;
+}
+
+.nav-container button {
+  margin: 30px 15px;
+  border-radius: 4px;
+  border: none;
+  padding: 10px;
+  color: black;
+  background-color: #ED6B5A;
+  font-weight: bolder;
+}
+
+.nav-container button:hover {
+  background-color: #3AD886;
+}
