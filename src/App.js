@@ -19,6 +19,10 @@ constructor() {
 }
 
 componentDidMount() {
+  this.getInventory();
+}
+
+getInventory() {
   axios.get('/api/inventory').then(response => {
     console.log(response)
     this.setState({inventory: response.data})
@@ -47,7 +51,7 @@ delete(id) {
         <Dashboard 
           inventory={this.state.inventory}
         />
-        <Form />
+        <Form getInventory ={this.getInventory}/>
       </div>
     );
   }
