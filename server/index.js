@@ -20,7 +20,7 @@ massive({
 
 //endpoints here
 // app.post('/api/product', ctrl.create); //create
-// app.get('/api/inventory', ctrl.getAll); //getAll
+app.get('/api/inventory', ctrl.getInventory); 
 // app.put('/api/products/:id', ctrl.update); //update
 // app.delete('/api/products/:id', ctrl.delete); //delete
 

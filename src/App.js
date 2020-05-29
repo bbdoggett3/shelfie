@@ -3,28 +3,26 @@ import "./App.css";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Form from "./components/Form/Form";
 import Header from "./components/Header/Header";
+import axios from 'axios';
 
 class App extends Component {
 constructor() {
   super();
 
   this.state = {
-    inventory: [{
-      name: "cool cat",
-      price: 1000,
-      img: "https://cdn.shopify.com/s/files/1/1511/4266/products/sunnies_05_530x.png?v=1575359889" 
-    },
-
-    {
-      name: "cool dog",
-      price: 1100,
-      img: "https://images-na.ssl-images-amazon.com/images/I/51UPqx1fn1L._AC_SY450_.jpg"
-    }
-      
-    ]
+    inventory: []
   }
 }
+
+componentDidMount() {
+  axios.get('/api/inventory').then(response => {
+    console.log(response)
+    this.setState({inventory: response.data})
+  }).catch(error => alert("Didn't get a inventory back."))
+}
+
   render() {
+    console.log(this.state.inventory)
     return (
       <div className="App">
         <h1>App main Component</h1>
