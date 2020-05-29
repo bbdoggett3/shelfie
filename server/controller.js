@@ -1,13 +1,36 @@
 module.exports = {
+  create: (req, res, next) => {
+    const db = req.app.get("db");
+    const { name, price, img } = req.body;
 
-    getInventory: (req, res) => {
-        const db = req.app.get("db");
+    db.create_product([name, price, img])
+      .then(() => res.sendStatus(200))
+      .catch((error) => {
+        res.status(500).send({ errorMessage: "Opps! Something went wrong" });
+        console.log(error);
+      });
+  },
 
-        db.get_inventory()
-        .then((products) => res.status(200).send(products))
-        .catch((error) => {
-            res.status(500).send({errorMessage: "Opps! Something went wrong"});
-            console.log(error);
-        });
-    }
+  getInventory: (req, res, next) => {
+    const db = req.app.get("db");
+
+    db.get_inventory()
+      .then((products) => res.status(200).send(products))
+      .catch((error) => {
+        res.status(500).send({ errorMessage: "Opps! Something went wrong" });
+        console.log(error);
+      });
+  },
+
+  delete: (req, res) => {
+    const db = req.app.get("db");
+    const { id } = req.params;
+
+    db.delete_product(id)
+      .then(() => res.sendStatus(200))
+      .catch((error) => {
+        res.status(500).send({ errorMessage: "Opps! Something went wrong" });
+        console.log(error);
+      });
+  },
 };

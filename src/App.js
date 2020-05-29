@@ -12,6 +12,8 @@ constructor() {
   this.state = {
     inventory: []
   }
+
+  this.componentDidMount = this.componentDidMount.bind(this);
 }
 
 componentDidMount() {
@@ -20,6 +22,15 @@ componentDidMount() {
     this.setState({inventory: response.data})
   }).catch(error => alert("Didn't get a inventory back."))
 }
+
+
+// delete(id) {
+//   console.log(id)
+//   axios.delete(`/api/inventory/${id}`).then(response => {
+//     this.setState({inventory: response.data})
+//   }).catch(error => alert("No Book was found to remove"))
+// }
+
 
   render() {
     console.log(this.state.inventory)

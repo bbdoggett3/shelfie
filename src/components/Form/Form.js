@@ -8,7 +8,7 @@ constructor() {
   this.state= {
     name: "",
     price: 0,
-    imgurl: ""
+    img: ""
   }
   this.handleChange = this.handleChange.bind(this);
 }
@@ -19,31 +19,38 @@ handleChange(event) {
   })
 }
 
-
-// makeNewBook(title, year, pageCount, img, review ) {
-//   const body = {title: this.state.title, year: this.state.year, pageCount: this.state.pageCount, img: this.state.img, review: this.state.review}
-//   axios.post('/api/books', body).then(response => {
-//     this.setState({books: response.data})
-//   }).catch(error => alert("Can't make a new Book at this time"))
-// }
-
-
 clearInput() {
   this.setState({
     name: "",
     price: 0,
     img: ""
   })
-
 }
 
+// componentDidMount() {
+//   this.props.getInvetory()
+// }
+
+// addItem() {
+//   const newItem = {
+//     name: this.state.name,
+//     price: this.state.price,
+//     img: this.state.img
+//   }
+
+//   axios.post('/api/product', newItem).then(response => {
+//     this.setState({inventory: response.data})
+//   })
+// }
+
   render() {
+  
     return (
       <div className="App">
         <form className="form-container">
           <label>
             <p>Image Url:</p>
-            <input type="text" name="imgurl" onChange={this.handleChange}></input>
+            <input type="text" name="img" onChange={this.handleChange}></input>
           </label>
           <label>
             <p>Product Name:</p>
@@ -56,6 +63,7 @@ clearInput() {
           <div className="form-btn=container">
             <button className="form-btn" onClick={this.clearInput}>Cancel</button>
             <button className="form-btn">Add to Inventory</button>
+            
           </div>
         </form>
       </div>
