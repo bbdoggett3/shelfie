@@ -15,7 +15,6 @@ constructor() {
 
   this.componentDidMount = this.componentDidMount.bind(this);
   this.getInventory = this.getInventory.bind(this);
-  this.delete = this.delete.bind(this);
 }
 
 componentDidMount() {
@@ -29,15 +28,6 @@ getInventory() {
   }).catch(error => alert("Didn't get a inventory back."))
 }
 
-
-delete(id) {
-  console.log(id)
-  axios.delete(`/api/inventory/${id}`).then(response => {
-    this.setState({inventory: response.data})
-  }).catch(error => alert("No Book was found to remove"))
-}
-
-
   render() {
     console.log(this.state.inventory)
     return (
@@ -45,6 +35,7 @@ delete(id) {
         <Header />
         <Dashboard 
           inventory={this.state.inventory}
+          getInventory ={this.getInventory}
         />
         <Form getInventory ={this.getInventory}/>
       </div>
