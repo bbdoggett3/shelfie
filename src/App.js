@@ -14,7 +14,7 @@ constructor() {
   }
 
   this.componentDidMount = this.componentDidMount.bind(this);
-  this.addProuduct = this.addProuduct.bind(this);
+  this.getInventory = this.getInventory.bind(this);
   this.delete = this.delete.bind(this);
 }
 
@@ -29,11 +29,6 @@ getInventory() {
   }).catch(error => alert("Didn't get a inventory back."))
 }
 
-addProuduct(body) {
-  axios.post('/api/product', body).then(response => {
-    this.setState({inventory: response.data})
-  })
- }
 
 delete(id) {
   console.log(id)

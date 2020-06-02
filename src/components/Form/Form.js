@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import axios from 'axios';
+import axios from 'axios';
 
 class Form extends Component {
 constructor() {
@@ -10,7 +10,8 @@ constructor() {
     price: 0,
     img: ""
   }
-  this.handleChange = this.handleChange.bind(this);
+    this.addProuduct = this.addProuduct.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 }
 
 handleChange(event) {
@@ -27,24 +28,19 @@ clearInput() {
   })
 }
 
-// componentDidMount() {
-//   this.props.getInvetory()
-// }
 
-// addItem() {
-//   const newItem = {
-//     name: this.state.name,
-//     price: this.state.price,
-//     img: this.state.img
-//   }
+addProuduct(event) {
+  event.preventDefault()
+  const {name, price, img} = this.state;
+  axios.post('/api/product', {name, price, img}).then(response => {
+    this.setState({inventory: response.data})
+    this.props.getInventory();
+  })
+ }
 
-//   axios.post('/api/product', newItem).then(response => {
-//     this.setState({inventory: response.data})
-//   })
-// }
 
   render() {
-  
+    
     return (
       <div className="App">
         <form className="form-container">
@@ -62,7 +58,7 @@ clearInput() {
           </label>
           <div className="form-btn=container">
             <button className="form-btn" onClick={this.clearInput}>Cancel</button>
-            <button className="form-btn">Add to Inventory</button>
+            <button className="form-btn" type='submit' onClick={this.addProuduct}>Add to Inventory</button>
             
           </div>
         </form>
