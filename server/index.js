@@ -15,6 +15,7 @@ massive({
 }).then(db => {
     app.set('db', db)
     console.log('Database is connected')
+    app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
 }).catch(error => console.log(error));
 
 app.use(express.json());
@@ -23,8 +24,6 @@ app.use(express.json());
 app.post('/api/product', ctrl.create); 
 app.get('/api/inventory', ctrl.getInventory); 
 // app.put('/api/products/:id', ctrl.update); //update
-app.delete('/api/inventory/:id', ctrl.delete);
+app.delete('/api/inventory/:id', ctrl.deleteProduct);
 
-
-app.listen(SERVER_PORT, () => console.log(`Listening on port ${SERVER_PORT}`));
 

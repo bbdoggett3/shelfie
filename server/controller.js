@@ -22,7 +22,7 @@ module.exports = {
       });
   },
 
-  delete: (req, res) => {
+  deleteProduct: (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
 

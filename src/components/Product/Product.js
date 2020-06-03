@@ -1,17 +1,17 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Product extends Component {
-  render() {
+function Product (props) {
+  const {item: {id, name, price, img}, deleteProduct} = props
     return (
       <div className="inventory-container">
-      <p className="inventory-text">{this.props.name}</p>
-      <p className="inventory-text">{`$${this.props.price}`}</p>
-      <img src={this.props.img} alt={`This is a ${this.props.name}`} />
-      <button onClick={this.props.deleteItem(this.props.key)}>Delete</button>
+      <p className="inventory-text">{name}</p>
+      <p className="inventory-text">{`$${price}`}</p>
+      <img src={img} alt={`This is a ${name}`} />
+      <button onClick={ () => deleteProduct(id)}>Delete</button>
       <button>Update</button>
     </div>
     );
   }
-}
+
 
 export default Product;
