@@ -15,7 +15,11 @@ function Dashboard(props) {
   return (
     <div className="inventory_container">
       {props.inventory.map((item) => (
-        <Product item={item} deleteProduct={deleteProduct} />
+        <Product
+          item={item}
+          deleteProduct={deleteProduct}
+          updateProduct={props.updateProduct}
+        />
       ))}
     </div>
   );

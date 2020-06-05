@@ -10,10 +10,11 @@ constructor() {
   super();
 
   this.state = {
-    inventory: []
+    inventory: [],
+    currentSelectedProduct: null
   }
 
-  this.componentDidMount = this.componentDidMount.bind(this);
+  
   this.getInventory = this.getInventory.bind(this);
 }
 
@@ -25,7 +26,11 @@ getInventory() {
   axios.get('/api/inventory').then(response => {
     console.log(response)
     this.setState({inventory: response.data})
-  }).catch(error => alert("Didn't get a inventory back."))
+  }).catch(error => alert(error, "Didn't get a inventory back."))
+}
+
+updateProduct = (product) => {
+ this.setState({currentSelectedProduct: product}) 
 }
 
   render() {
@@ -34,10 +39,14 @@ getInventory() {
       <div className="App">
         <Header />
         <Dashboard 
-          inventory={this.state.inventory}
+          inventory ={this.state.inventory}
           getInventory ={this.getInventory}
+          updateProduct = {this.updateProduct}
         />
-        <Form getInventory ={this.getInventory}/>
+        <Form 
+          getInventory ={this.getInventory}
+          currentSelectedProduct ={this.state.currentSelectedProduct}    
+        />
       </div>
     );
   }
