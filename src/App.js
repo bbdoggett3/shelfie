@@ -11,7 +11,7 @@ constructor() {
 
   this.state = {
     inventory: [],
-    currentSelectedProduct: null
+    currentSelectedProduct: {}
   }
 
   

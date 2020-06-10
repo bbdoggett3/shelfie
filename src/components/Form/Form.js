@@ -38,27 +38,46 @@ addProuduct(event) {
   })
  }
 
+ componentDidUpdate(prevProps) {
+   console.log(prevProps)
+    const currentId = this.props.currentSelectedProduct.id
+    const previousId = prevProps.currentSelectedProduct.id
+    const { name,  price, img } = this.props.currentSelectedProduct
+    console.log(currentId, previousId)
+    if(currentId !== previousId){
+      this.setState({
+        name: name,
+        price: price,
+        img: img
+      })
+    }
+ }
+
+ updateProduct() {
+   
+ }
 
   render() {
     console.log(this.props)
     return (
       <div className="App">
+        <p></p>
         <form className="form-container">
           <label>
             <p>Image Url:</p>
-            <input type="text" name="img" onChange={this.handleChange}></input>
+            <input value={this.state.img} type="text" name="img" onChange={this.handleChange}></input>
           </label>
           <label>
             <p>Product Name:</p>
-            <input type="text" name="name" onChange={this.handleChange}></input>
+            <input value={this.state.name} type="text" name="name" onChange={this.handleChange}></input>
           </label>
           <label>
             <p>Price:</p>
-            <input type="text" name="price" onChange={this.handleChange}></input>
+            <input value={this.state.price} type="text" name="price" onChange={this.handleChange}></input>
           </label>
           <div className="form-btn=container">
             <button className="form-btn" onClick={this.clearInput}>Cancel</button>
-            <button className="form-btn" type='submit' onClick={this.addProuduct}>Add to Inventory</button>
+            <button className="form-btn" type='submit' onClick={this.props.currentSelectedProduct.id ? this.updateProduct : this.addProuduct}>{this.props.currentSelectedProduct.id ? 'Update Product' : 'Add to Inventory'}</button>
             
           </div>
         </form>
