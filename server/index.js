@@ -23,7 +23,7 @@ app.use(express.json());
 //endpoints here
 app.post('/api/product', ctrl.create); 
 app.get('/api/inventory', ctrl.getInventory); 
-// app.put('/api/products/:id', ctrl.update); //update
+app.put('/api/products/:id', ctrl.updateProduct); 
 app.delete('/api/inventory/:id', ctrl.deleteProduct);
 
 

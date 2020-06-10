@@ -33,4 +33,16 @@ module.exports = {
         console.log(error);
       });
   },
+
+  updateProduct: async (req, res) => {
+    const db = req.app.get("db");
+    const { id } = req.params;
+    const { name, price, img } = req.body;
+
+    let data = await db
+      .update_product(id, name, price, img)
+      .catch((error) => res.status(500).send(error));
+
+    res.status(200).send(data);
+  },
 };
