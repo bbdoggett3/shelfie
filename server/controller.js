@@ -35,6 +35,7 @@ module.exports = {
   },
 
   updateProduct: async (req, res) => {
+    console.log("hit")
     const db = req.app.get("db");
     const { id } = req.params;
     const { name, price, img } = req.body;

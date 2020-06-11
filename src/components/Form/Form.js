@@ -52,8 +52,7 @@ class Form extends Component {
     }
   }
 
-  updateProduct = (id, event) => {
-    event.preventDefault();
+  updateProduct = (id) => {
     const { name, price, img } = this.state;
     const body = {name, price, img}
 
@@ -107,7 +106,7 @@ class Form extends Component {
               type="submit"
               onClick={
                 this.props.currentSelectedProduct.id
-                  ? this.updateProduct
+                  ? () => this.updateProduct(this.props.currentSelectedProduct.id)
                   : this.addProuduct
               }
             >
